@@ -15,9 +15,9 @@ var employee = require('./employee');
 
 
 app.set('port', (process.env.PORT || 5000));
-
+console.log(employee());
 app.get('/employee', function(request, response, next){
-    response.send(employee);
+    response.send(employee());
 });
 
 app.get('/*', function(request,response){
