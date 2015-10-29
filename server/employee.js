@@ -8,21 +8,21 @@ var employeeFunction = function() {
     var skillType;
     var employeeObject = {};
 
-    employeeObject["skill level"] = randomNumber(1,12);
-    employeeObject["skill type"] = employeeType();
+    employeeObject.skill_level = randomNumber(1,12);
+    employeeObject.skill_type = employeeType();
 
 
     function employeeType () {
         var x = randomNumber(0,2);
         switch(x) {
             case 0:
-                skillType = "Front-End";
+                skillType = "front_end";
                 break;
             case 1:
-                skillType = "Back-End";
+                skillType = "back_end";
                 break;
             case 2:
-                skillType = "Logic";
+                skillType = "logic";
                 break;
             default:
                 skillType = "Error";
