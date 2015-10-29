@@ -55,7 +55,7 @@ function ajaxCall(){
 
                 updateSkillLevel(data);
                 checkProject();
-                return data;
+
             }
     });
     return employeesObject;
@@ -76,7 +76,7 @@ function updateSkillLevel(data){
 function checkProject () {
 
     if (employeesObject.logic == 0 || employeesObject.front_end == 0 || employeesObject.back_end == 0){
-
+        ajaxCall();
     } else{
        calculateCompletionTime();
         appendTime();
@@ -93,6 +93,7 @@ function calculateCompletionTime(){
         jobCompletion.push(Math.ceil((project[jobs[i]])/(employeesObject[jobs[i]])));
         max = Math.max(max, jobCompletion[i]);
     }
+
     return max;
 
 }
@@ -111,7 +112,7 @@ function appendProject() {
 function appendTime(){
     $(".time").remove();
     $ele = "<div class ='time well container'>"+
-        "<div class = 'col-md-12'>Weeks to complete project: "+ max +"</div></div>";
+        "<div class = 'col-md-4 col-md-offset-4'>Weeks to complete project: "+ max +"</div></div>";
     $("#completionTime").append($ele);
 }
 //utility function
