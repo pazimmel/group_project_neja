@@ -26,7 +26,6 @@ $(document).ready(function() {
     $(".GE-button").on('click', function () {
 
         ajaxCall();
-        //console.log("ajaxcall is done");
     });
 
 });
@@ -41,7 +40,6 @@ function generateProject() {
     //BE key assigned random number between 10-60
         project.back_end = randomNumber(10,60);
 
-    console.log(project.logic, " ", project.front_end, " ", project.back_end);
     return project;
     //if you call this function quickly, it returns the same project object. DEBUG!
 }
@@ -57,7 +55,7 @@ function ajaxCall(){
 
                 updateSkillLevel(data);
                 checkProject();
-                //return data;
+                return data;
             }
     });
     return employeesObject;
@@ -78,17 +76,11 @@ function updateSkillLevel(data){
 function checkProject () {
 
     if (employeesObject.logic == 0 || employeesObject.front_end == 0 || employeesObject.back_end == 0){
-        //console.log("you don't have enough people to complete a project");
-        //console.log(employeesObject.logic, " ", employeesObject.front_end, " ",employeesObject.back_end);
-        ajaxCall();
+
     } else{
-        console.log("current project skill per week");
-        console.log("logic ", employeesObject.logic, "front end ", employeesObject.front_end, "back end ",employeesObject.back_end);
-        var y = calculateCompletionTime();
-        console.log("weeks to finish project ",y);
+       calculateCompletionTime();
         appendTime();
     }
-    console.log("get out of check");
     return employeesObject;
 }
 
@@ -101,8 +93,6 @@ function calculateCompletionTime(){
         jobCompletion.push(Math.ceil((project[jobs[i]])/(employeesObject[jobs[i]])));
         max = Math.max(max, jobCompletion[i]);
     }
-    console.log(jobCompletion);
-    console.log(max);
     return max;
 
 }
@@ -120,9 +110,9 @@ function appendProject() {
 
 function appendTime(){
     $(".time").remove();
-    var $el = "<div class ='time well container'>"+
+    $ele = "<div class ='time well container'>"+
         "<div class = 'col-md-12'>Weeks to complete project: "+ max +"</div></div>";
-    $("#completionTime").append($el);
+    $("#completionTime").append($ele);
 }
 //utility function
 function randomNumber(min, max) {
