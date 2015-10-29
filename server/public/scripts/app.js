@@ -170,6 +170,7 @@ function calculateCompletionTime(){
     return max;
 
 }
+//append to DOM functions
 
 function appendProject() {
     $(".project").remove();
