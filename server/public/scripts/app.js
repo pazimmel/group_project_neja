@@ -30,21 +30,8 @@ $(document).ready(function() {
 
 });
 
-//function to generate project
-function generateProject() {
-
-     //logic key assigned random number between 10-60
-        project.logic = randomNumber(10,60);
-    //FE key assigned random number between 10-60
-        project.front_end = randomNumber(10,60);
-    //BE key assigned random number between 10-60
-        project.back_end = randomNumber(10,60);
-
-    return project;
-    //if you call this function quickly, it returns the same project object. DEBUG!
-}
-
-//ajax call to server for an employee
+//AJAX CALL FUNCTIONS
+//get one employee
 function ajaxCall(){
 
     $.ajax({
@@ -55,10 +42,24 @@ function ajaxCall(){
 
                 updateSkillLevel(data);
                 checkProject();
-
             }
     });
     return employeesObject;
+}
+
+//OPERATIONAL FUNCTIONS
+//function to generate project
+function generateProject() {
+
+    //logic key assigned random number between 10-60
+    project.logic = randomNumber(10,60);
+    //FE key assigned random number between 10-60
+    project.front_end = randomNumber(10,60);
+    //BE key assigned random number between 10-60
+    project.back_end = randomNumber(10,60);
+
+    return project;
+    //if you click quickly this function returns the same project object. DEBUG!
 }
 
 //updates the total skill level of total employees
@@ -72,6 +73,7 @@ function updateSkillLevel(data){
     return employeesObject;
 
 }
+
 //function to see if we need another employee
 function checkProject () {
 
@@ -98,7 +100,7 @@ function calculateCompletionTime(){
 
 }
 
-//append to DOM functions
+//APPEND FUNCTIONS
 function appendProject() {
     $(".project").remove();
     $(".time").remove();
@@ -115,7 +117,8 @@ function appendTime(){
         "<div class = 'col-md-4 col-md-offset-4'>Weeks to complete project: "+ max +"</div></div>";
     $("#completionTime").append($ele);
 }
-//utility function
+
+////UTILITY FUNCTIONS
 function randomNumber(min, max) {
     return Math.floor((Math.random() * (1 + max - min) + min));
 }

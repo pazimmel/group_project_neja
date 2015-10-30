@@ -1,12 +1,5 @@
 //SERVER SIDE APP.JS
 
-//generate employee with type and skill number
-// //generate the type  X
-//generate the skill number X
-//put it together in an employee object X
-//server side app.js sends employee object to client side app.js
-
-
 
 var express = require('express');
 var app = express();
